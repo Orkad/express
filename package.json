@@ -1,0 +1,27 @@
+{
+  "name": "employeemanager",
+  "version": "1.0.0",
+  "description": "Gestionnaire d'employe",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Orkad/express.git"
+  },
+  "keywords": [
+    "employee",
+    "manager"
+  ],
+  "author": "GIDON & BELLOT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Orkad/express/issues"
+  },
+  "homepage": "https://github.com/Orkad/express#readme"
+}
