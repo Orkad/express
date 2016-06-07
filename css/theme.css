@@ -1,0 +1,58 @@
+body {
+    width: 100%;
+    height: auto;
+    margin-top: 1%;
+}
+
+div{
+    margin: auto;
+    display: block;
+}
+
+div.header_menu {
+    width: 20%;
+    padding: 1%;
+
+    display: block;
+    text-align: center;
+    background-color: #0058a5;
+    border:	solid black 3px;
+}
+
+.header_menu > a {
+    text-decoration: none;
+    color: white;
+}
+
+body table {
+    margin:auto;
+    width:90%;
+    border-collapse: collapse;
+    position: relative;
+}
+
+th {
+    font-weight: bold;
+    height: 40px;
+    border: 1px solid black;
+}
+
+td {
+    border: 1px solid black;
+}
+
+form{
+    margin: auto;
+    width: 20%;
+    padding: 1%;
+    border:	solid black 5px;
+}
+
+.align_input {
+    width: 10%;
+    margin-bottom: 10px;
+}
+
+input {
+    margin: 5px 0 5px 0;
+}
