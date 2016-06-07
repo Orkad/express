@@ -9,23 +9,12 @@ app.use(body_parser.json());
 app.use(body_parser.urlencoded({extended: true}));
 app.set('view engine', 'jade');
 
-
-
-
-
-
-app.use(function (req, res, next) {
-  console.log('Action at :', Date.now());
-  next();
-});
-
 app.get('/collaborateurs', function (req, res) {
-   //res.sendFile( __dirname + "/views/" + "liste_employes.html" );
-   res.render('liste_employes', {param: req.result});
+   res.render('liste_employes');
 })
 
 app.get('/collaborateurs/new', function (req, res) {
-	res.render('nouvel_employe.jade');
+	res.render('nouvel_employe');
 })
 
 app.post('/collaborateurs/new', function(req, res, next) {
