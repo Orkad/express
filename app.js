@@ -6,9 +6,8 @@ var MongoClient = require('mongodb').MongoClient;
 
 app.use(express.static('public'));
 app.use(body_parser.json());
-app.use(body_parser.urlencoded({
-  extended: true
-})); 
+app.use(body_parser.urlencoded({extended: true}));
+app.set('view engine', 'jade');
 
 
 
@@ -21,12 +20,12 @@ app.use(function (req, res, next) {
 });
 
 app.get('/collaborateurs', function (req, res) {
-   res.sendFile( __dirname + "/views/" + "liste_employes.html" );
+   //res.sendFile( __dirname + "/views/" + "liste_employes.html" );
+   res.render('liste_employes', {param: req.result});
 })
 
 app.get('/collaborateurs/new', function (req, res) {
-   res.sendFile( __dirname + "/views/" + "nouvel_employe.html" );
-   
+	res.render('nouvel_employe.jade');
 })
 
 app.post('/collaborateurs/new', function(req, res, next) {
