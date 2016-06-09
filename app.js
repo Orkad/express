@@ -8,6 +8,13 @@ var ObjectID = require('mongodb').ObjectID;
 
 //MongoDB link
 var URL = 'mongodb://localhost:27017/employeemanager';
+var db;
+
+MongoClient.connect(URL, function(err, database) {
+	if(!err)
+		db = database;
+});
+	
 var app = express();
 
 app.use(express.static('public'));
@@ -23,14 +30,12 @@ app.get('/', function(req,res){
 
 
 app.get('/collaborateurs', function (req, res) {
-	MongoClient.connect(URL, function(err, db) {
-		if(err)
-			res.send('Impossible de joindre la base de donnée');
+	if(db)
 		db.collection('users').find({}).toArray(function(err,results){
-			db.close();
 			res.render('liste_employes',{users : results});
 		});
-	});
+	else
+		res.send('Impossible de joindre la base de donnée');
 });
 
 app.get('/collaborateurs/new', function (req, res) {
@@ -38,25 +43,21 @@ app.get('/collaborateurs/new', function (req, res) {
 });
 
 app.get('/collaborateurs/watch', function (req, res) {
-	MongoClient.connect(URL, function(err, db) {
-		if(err)
-			res.send('Impossible de joindre la base de donnée');
+	if(db)
 		db.collection('users').findOne({'_id':new ObjectID(req.query.id)},function(err, user) {
-			db.close();
 			res.render('employe_page_personnel',user);
 		});
-		
-	});
+	else
+		res.send('Impossible de joindre la base de donnée');
 });
 
 app.post('/collaborateurs/new', function(req, res, next) {
-   MongoClient.connect(URL, function(err, db) {
-		if(err)
-			res.send('Impossible de joindre la base de donnée');
+	if(db){
 		db.collection('users').insert(req.body);
-		db.close();
 		res.send('Collaborateur ajouté avec succès');
-	});
+	}
+	else
+		res.send('Impossible de joindre la base de donnée');
 });
 
 app.listen(80);
